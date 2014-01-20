@@ -1,0 +1,27 @@
+{
+    "name": "captbaritone/transcode-to-mp3-stream",
+    "type": "library",
+    "description": "Transcode various audio formats to mp3 streams on the fly",
+    "keywords": ["mp3","transcode", "stream", "audio"],
+    "homepage": "http://github.com/captbaritone/transcode-to-mp3-stream",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jordan Eldredge",
+            "email": "jordanEldredge@gmail.com",
+            "homepage": "http://jordaneldredge.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Captbaritone\\TranscodeToMp3Stream": "src"
+        }
+    }
+}
