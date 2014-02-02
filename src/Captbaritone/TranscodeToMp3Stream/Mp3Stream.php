@@ -2,7 +2,9 @@
 
 use Captbaritone\TranscodeToMp3Stream\Streamer;
 use Captbaritone\TranscodeToMp3Stream\HeaderBuilder;
-use Captbaritone\TranscodeToMp3Stream\TimeCalculator;
+use Captbaritone\TranscodeToMp3Stream\Transcoder;
+use Captbaritone\TranscodeToMp3Stream\AudioInspector;
+use Captbaritone\TranscodeToMp3Stream\TranscodedSizeEstimator;
 
 class Mp3Stream
 {
@@ -10,32 +12,25 @@ class Mp3Stream
     protected $transcoder;
     protected $streamer;
     protected $headerBuilder;
-    protected $timeCalculator;
+    protected $audioInspector;
     protected $transcodedSizeEstimator;
 
-    public function __construct($transcoder = false, $streamer = false, $headerBuilder = false, $timeCalculator = false, $transcodedSizeEstimator = false)
+    public function __construct($transcoder = false, $streamer = false, $headerBuilder = false, $audioInspector = false, $transcodedSizeEstimator = false)
     {
         $this->transcoder = $transcoder ?: new Transcoder();
         $this->streamer = $streamer ?: new Streamer();
         $this->headerBuilder = $headerBuilder ?: new HeaderBuilder();
-        $this->timeCalculator = $timeCalculator ?: new TimeCalculator();
+        $this->audioInspector = $audioInspector ?: new AudioInspector();
         $this->transcodedSizeEstimator = $transcodedSizeEstimator ?: new TranscodedSizeEstimator();
     }
 
-    public function output($sourceMedia,
-                           $outputFilename = 'test.mp3',
-                           $kbps = 128,
-                           $start = NULL,
-                           $end = NULL)
+    public function output($sourceMedia, $outputFilename = 'test.mp3', $kbps = 128, $start = 0, $end = 0)
     {
-        if($start === NULL) $start = '00:00:00:00';
-
-        // XXX Find length of file
-        if($end === NULL) $end = '00:01:00:00';
-
-        $length = $this->timeCalculator->diffInSeconds($end, $start);
-
         $cmd = $this->transcoder->command($sourceMedia, $kbps, $start, $end);
+
+        $endTime = $end ?: $this->audioInspector->getLength($sourceMedia);
+        $length = $endTime - $start;
+
 
         $byteGoal = $this->transcodedSizeEstimator->estimatedBytes($length, $kbps);
 

@@ -17,7 +17,7 @@ class Mp3StreamTest extends \PHPUnit_Framework_TestCase
         $outputFilename = 'testing.mp3';
         $kbps = 128;
         $start = 'start';
-        $end = 'end';
+        $end = NULL;
         $byteGoal = 100;
 
         $command = 'foo';
@@ -44,8 +44,8 @@ class Mp3StreamTest extends \PHPUnit_Framework_TestCase
             ->with($outputFilename, $byteGoal);
 
 
-        $timeCalculator = m::mock('TimeCalculator');
-        $timeCalculator->shouldReceive('diffInSeconds')
+        $audioInspector = m::mock('AudioInspector');
+        $audioInspector->shouldReceive('getLength')
             ->once()
             ->andReturn(0);
 
@@ -53,7 +53,7 @@ class Mp3StreamTest extends \PHPUnit_Framework_TestCase
             $transcoder,
             $streamer,
             $headerBuilder,
-            $timeCalculator,
+            $audioInspector,
             $transcodedSizeEstimator
         );
 
