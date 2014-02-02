@@ -80,3 +80,13 @@ later.
 
 If you have any questions, or get stuck please let me know:
 jordan@jordaneldredge.com.
+
+## License
+
+This project is released under the MIT License. The example audio file is an
+excerpt from the Creative Commons recording of J.S. Bach's Goldberg Variations.
+You can find the whole recording, and more information at the [Open Goldberg
+Variations] website.
+
+[Open Goldberg Variations]: http://www.opengoldbergvariations.org/
+
