@@ -11,7 +11,7 @@ video files.
 
 ## Status
 
-Alpha. This package is not complete yet.
+Beta. This package is working, but may still have some kinks to workout.
 
 ## Installation 
 
@@ -79,7 +79,7 @@ later.
 ## Help/questions
 
 If you have any questions, or get stuck please let me know:
-jordan@jordaneldredge.com.
+<jordan@jordaneldredge.com>.
 
 ## License
 
