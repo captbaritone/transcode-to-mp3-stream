@@ -11,13 +11,17 @@ class Transcoder
         $length = $end - $start;
         $sourceMedia = escapeshellarg($sourceMedia);
         $kbps = escapeshellarg("{$kbps}k");
+
+        $haveStart = (bool) $start;
+        $haveEnd = (bool) $end;
+
         $start = escapeshellarg($start);
         $end = escapeshellarg($end);
 
         $args = array();
         $args[] = "ffmpeg";
-        if($start) $args[] = "-ss {$start}";
-        if($end) $args[] = "-t {$end}";
+        if($haveStart) $args[] = "-ss {$start}";
+        if($haveEnd) $args[] = "-t {$end}";
         $args[] = "-i {$sourceMedia}";
         $args[] = "-b:a {$kbps}";
         $args[] = "-minrate {$kbps}";
