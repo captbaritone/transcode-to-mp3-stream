@@ -14,7 +14,7 @@ class AudioInspector
     public function getLength($file)
     {
         $file = escapeshellarg($file);
-        $cmd = "ffprobe -v quiet -show_format -show_streams {$file}  2>&1 | grep -m 1 'duration=' | grep -o '[0-9.]*'";
+        $cmd = "ffprobe -v quiet -show_format -show_streams {$file}  2>&1 | grep -m 1 'duration=' | grep -o '[0-9.]\+'";
 
         $output = exec($cmd);
         return $output;
