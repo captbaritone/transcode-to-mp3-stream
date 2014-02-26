@@ -8,5 +8,5 @@ before_script:
   - composer self-update
   - composer install --prefer-source --no-interaction --dev
 install:
-  - apt-get install ffmpeg
-  - apt-get install libavcodec-extra-53
+  - sudo apt-get install ffmpeg
+  - sudo apt-get install libavcodec-extra-53
