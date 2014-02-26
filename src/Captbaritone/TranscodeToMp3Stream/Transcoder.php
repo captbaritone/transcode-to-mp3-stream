@@ -23,7 +23,7 @@ class Transcoder
         if($haveStart) $args[] = "-ss {$start}";
         if($haveEnd) $args[] = "-t {$end}";
         $args[] = "-i {$sourceMedia}";
-        $args[] = "-b:a {$kbps}";
+        $args[] = "-b {$kbps}";
         $args[] = "-minrate {$kbps}";
         $args[] = "-maxrate {$kbps}";
         $args[] = "-bufsize 64k";
