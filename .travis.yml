@@ -7,6 +7,3 @@ php:
 before_script:
   - composer self-update
   - composer install --prefer-source --no-interaction --dev
-install:
-  - sudo apt-get install ffmpeg
-  - sudo apt-get install libavcodec-extra-53
