@@ -14,6 +14,10 @@
         <testsuite name="Transcode to Mp3 Stream Test Suite">
             <directory>tests</directory>
         </testsuite>
+        <testsuite name="No ffmpeg">
+            <directory>tests</directory>
+            <exclude>tests/AudioInspectorTest.php</exclude>
+        </testsuite>
     </testsuites>
 
 </phpunit>
