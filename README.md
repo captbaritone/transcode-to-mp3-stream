@@ -1,5 +1,7 @@
 # Transcode to MP3 Stream PHP Library
 
+[![Build Status](https://travis-ci.org/captbaritone/transcode-to-mp3-stream.png?branch=master)](https://travis-ci.org/captbaritone/transcode-to-mp3-stream)
+
 Transcode, on the fly, any media file that ffmpeg can read into an MP3 stream
 playable natively by any modern browser. The library handles the annoying
 requirements of generating the correct headers and relies on ffmpeg to handle
