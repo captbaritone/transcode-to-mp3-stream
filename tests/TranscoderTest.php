@@ -17,7 +17,7 @@ class TranscoderTest extends \PHPUnit_Framework_TestCase
 
         $command = $transcoder->command('testfile.flac', 'KBPS', 'start', 'end');
 
-        $expected = "ffmpeg -ss 'start' -t 'end' -i 'testfile.flac' -b 'KBPSk' -minrate 'KBPSk' -maxrate 'KBPSk' -bufsize 64k -f mp3 -map_metadata -1  - 2>/dev/null";
+        $expected = "ffmpeg -ss 'start' -t 'end' -i 'testfile.flac' -ab 'KBPSk' -minrate 'KBPSk' -maxrate 'KBPSk' -bufsize 64k -f mp3 -map_metadata -1  - 2>/dev/null";
 
         $this->assertEquals($command, $expected);
     }
