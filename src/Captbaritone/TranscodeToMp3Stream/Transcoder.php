@@ -5,25 +5,24 @@ use Captbaritone\TranscodeToMp3Stream\Pipe;
 class Transcoder
 {
 
-    public function command($sourceMedia, $kbps, $start, $end)
+    public function command($sourceMedia, $kbps, $start, $duration)
     {
         $format = 'mp3';
-        $length = $end - $start;
         $sourceMedia = escapeshellarg($sourceMedia);
         $kbps = escapeshellarg("{$kbps}k");
 
         $haveStart = (bool) $start;
-        $haveEnd = (bool) $end;
+        $haveDuration = (bool) $duration;
 
         $start = escapeshellarg($start);
-        $end = escapeshellarg($end);
+        $duration = escapeshellarg($duration);
 
         $args = array();
         $args[] = "ffmpeg";
         if($haveStart) $args[] = "-ss {$start}";
-        if($haveEnd) $args[] = "-t {$end}";
+        if($haveDuration) $args[] = "-t {$duration}";
         $args[] = "-i {$sourceMedia}";
-        $args[] = "-b {$kbps}";
+        $args[] = "-ab {$kbps}";
         $args[] = "-minrate {$kbps}";
         $args[] = "-maxrate {$kbps}";
         $args[] = "-bufsize 64k";
