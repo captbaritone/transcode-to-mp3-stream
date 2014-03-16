@@ -26,12 +26,11 @@ class Mp3Stream
 
     public function output($sourceMedia, $outputFilename = 'test.mp3', $kbps = 128, $start = 0, $end = 0)
     {
-        $duration = $end - $start;
-        $cmd = $this->transcoder->command($sourceMedia, $kbps, $start, $duration);
 
         $endTime = $end ?: $this->audioInspector->getLength($sourceMedia);
         $length = $endTime - $start;
 
+        $cmd = $this->transcoder->command($sourceMedia, $kbps, $start, $length);
 
         $byteGoal = $this->transcodedSizeEstimator->estimatedBytes($length, $kbps);
 
