@@ -18,7 +18,7 @@ class Transcoder
         $duration = escapeshellarg($duration);
 
         $args = array();
-        $args[] = "ffmpeg";
+        $args[] = "avconv";
         if($haveStart) $args[] = "-ss {$start}";
         if($haveDuration) $args[] = "-t {$duration}";
         $args[] = "-i {$sourceMedia}";
