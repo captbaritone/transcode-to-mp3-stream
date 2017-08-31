@@ -18,6 +18,7 @@ class Transcoder
         $duration = escapeshellarg($duration);
 
         $args = array();
+        $args[] = "exec";
         $args[] = "avconv";
         if($haveStart) $args[] = "-ss {$start}";
         if($haveDuration) $args[] = "-t {$duration}";
