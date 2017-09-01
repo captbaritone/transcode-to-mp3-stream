@@ -14,7 +14,7 @@ class Streamer
 
     public function outputStream($cmd, $byteGoal)
     {
-        $this->pipe->open($cmd, 'r');
+        $this->pipe->open($cmd);
 
         // Initilize our count of bytes sent
         $outputSize = 0;
